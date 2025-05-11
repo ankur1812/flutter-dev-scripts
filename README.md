@@ -1,13 +1,70 @@
-# Flutter / React-Native Scripts
+# Flutter dev scripts
+
+<br>
+
+## 1. Basic Flutter commands: 
+### 1.1. Create new app
+```
+flutter create my_todo_app
+
+flutter create --platforms=windows,macos,linux my_todo_app
+```
+
+### 1.2. Enable/Disable web pacakging
+```
+flutter config --enable-web
+flutter config --no-enable-web
+```
+
+**Use same flags for other platforms :**
+
+```
+flutter config --enable-windows
+flutter config --no-enable-windows
+
+flutter config --enable-macos
+flutter config --no-enable-macos
+
+flutter config --enable-linux
+flutter config --no-enable-linux
+```
+
+### 1.3. Check devices
+```
+flutter devices
+```
+
+### 1.4. Install dependencies
+```
+flutter pub get
+```
+
+### 1.5. Run app:
+```
+flutter run -d your-android-device-id
+flutter run -d chrome
+```
+
+### 1.6. Build apps
+```
+flutter build apk --release
+flutter build ios --release
+flutter build web
+flutter run -d windows
+flutter run -d macos
+flutter run -d linux
+```
+
+<br>
 <br>
 
 
-## 1. Initial Setup: Android Debug Bridge (ADB)
+## 2. Initial Setup: Android Debug Bridge (ADB)
 Android Deug Bridge is required to allow connection to your device.
 <br>
 <br>
 
-### 1.1. Basic ADB commands: 
+### 2.1. Basic ADB commands: 
 
 ```
 adb kill-server
@@ -18,7 +75,7 @@ adb connect phone_ip:5555
 
 <br>
 
-### 1.2. Fix failing device connections
+### 2.2. Fix failing device connections
 
 In case, there are connection issues with the device, add the device's vendor ID to `android_usb.ini` file
 <br>
@@ -52,7 +109,6 @@ Linux/Mac: ~/.android/adb_usb.ini
 0x2ae5  ← Vivo
 0x2a48  ← Wiko
 0x2a40  ← ZTE
-
 ```
 
 To get the Device ID use the `lsusb` command 
@@ -63,21 +119,18 @@ Bus 001 Device 002: ID 0e8d:104a MediaTek Inc. LAVA LXX504
 
 # Here 0e8d is the Vendor ID (for MediaTek) and 104a is product ID (specific to LAVA device model).
 # NOTE: In android_usb.ini, the hex code must start with 0x. So the entry would be 0x0e8d
-
 ```
 
 Once the `android_usg.ini` is updated, restart the adb server.
 ```
 adb kill-server
 adb start-server
-
 ```
 
 <br>
-<br>
 
 
-### 1.3. (For Linux) You may need to updated udev permissions
+### 2.3. (For Linux) You may need to updated udev permissions
 <br>
 
 
@@ -96,54 +149,3 @@ sudo service udev restart
 ```
 
 
-<br>
-
-
-## 2. Flutter commands: 
-### 2.1. Create new app
-```
-flutter create my_todo_app
-
-flutter create --platforms=windows,macos,linux my_todo_app
-```
-
-### 2.2. Enable/Disable web pacakging
-```
-flutter config --enable-web
-flutter config --no-enable-web
-```
-
-**Use same flags for other platforms :**
-
-```
-flutter config --enable-windows
-flutter config --no-enable-windows
-
-flutter config --enable-macos
-flutter config --no-enable-macos
-
-flutter config --enable-linux
-flutter config --no-enable-linux
-```
-
-### 2.3. Check devices
-flutter devices
-
-### 2.4. Install dependencies
-flutter pub get
-
-### 2.5. Run app:
-```
-flutter run -d your-android-device-id
-flutter run -d chrome
-```
-
-### 2.6. Build apps
-```
-flutter build apk --release
-flutter build ios --release
-flutter build web
-flutter run -d windows
-flutter run -d macos
-flutter run -d linux
-```
